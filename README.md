@@ -19,4 +19,4 @@ n2:{
 }
 }
 
-where n1, n2, ... are nonnegative integers.
+where m1, n1, n2, ... are nonnegative integers
