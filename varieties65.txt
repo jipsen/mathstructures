@@ -1,0 +1,214 @@
+categories = [
+
+{abbr:"Set", name:"Sets", 
+defn:"sets with no operations",
+signature:{},
+axioms:[],
+nalgs:{1:1,2:1,3:1,4:1,5:1},
+superclasses:[],
+subclasses:[]
+},
+{abbr:"MonoUn", name:"Monounary algebras", 
+defn: "sets with a unary operation",
+signature:{"f":[1,"prefix"]},
+axioms:[],
+nalgs:{1:1},
+superclasses:[],
+subclasses:[]
+},
+{abbr:"DuoUn", name:"Duo-unary algebras", 
+defn: "sets with two unary operations",
+signature:{"f":[1,"prefix"], "g":[1,"prefix"]},
+axioms:[],
+nalgs:{1:1},
+superclasses:[],
+subclasses:["MonoUn"]
+},
+{abbr:"Bin", name:"Binars", 
+defn: "sets with a binary operation",
+signature:{"\\cdot":[2,"infixomit"]},
+axioms:[],
+nalgs:{1:1},
+superclasses:[],
+subclasses:["Sgrp", "CBin", "IBin"]
+},
+{abbr:"Sgrp", name:"Semigroups", 
+defn: "sets with an associative binary operation",
+signature:{"\\cdot":[2,"infixomit",70]},
+axioms:["(xy)z = x(yz)"],
+nalgs:{1:1},
+superclasses:["Bin"],
+subclasses:["Bnd","CSgrp"]
+},
+{abbr:"CSgrp", name:"Commutative semigroups", 
+defn: "semigroups with a commutative operation",
+signature:{"\\cdot":[2,"infixomit",70]},
+axioms:["(xy)z = x(yz)", "xy = yx"],
+nalgs:{1:1},
+superclasses:["Sgrp"],
+subclasses:["Slat"]
+},
+{abbr:"Bnd", name:"Bands", 
+defn: "semigroups with an idempotent operation",
+signature:{"\\cdot":[2,"infixomit",70]},
+axioms:["(xy)z = x(yz)", "xx = x"],
+nalgs:{1:1},
+properties:{locally_finite:"true"},
+superclasses:["Sgrp"],
+subclasses:["Slat"]
+},
+{abbr:"Slat", name:"Semilattices", 
+defn: "semigroups with an idempotent operation",
+signature:{"\\cdot":[2,"infixomit",70]},
+axioms:["(xy)z = x(yz)", "xy = yx", "xx = x"],
+nalgs:{1:1},
+properties:{locally_finite:"true"},
+superclasses:["Bnd","CSgrp"],
+subclasses:["Triv"]
+},
+{abbr:"DuoBin", name:"Duobinars", 
+defn: "sets with two binary operations",
+signature:{"+":[2,"infixl",60], "\\cdot":[2,"infixomit",70]},
+axioms:[],
+nalgs:{1:1},
+properties:{locally_finite:"false"},
+superclasses:[],
+subclasses:["Shll"]
+},
+{abbr:"Mon", name:"Moniods",
+defn: "semigroups expanded with an identity element",
+signature:{"\\cdot":[2,"infixomit"], "1":[0]},
+axioms:["(xy)z = x(yz)", "x1 = x = 1x"],
+nalgs:{1:1},
+superclasses:["Sgrp"],
+subclasses:["CMon", "Grp", "IMon"]
+},
+{abbr:"CMon", name:"Commutative moniods",
+defn: "monoidss with a commutative binary operation",
+signature:{"\\cdot":[2,"infixomit"], "1":[0]},
+axioms:["(xy)z = x(yz)", "x1 = x = 1x","xy = yx"],
+nalgs:{1:1},
+superclasses:["Mon"],
+subclasses:["USlat", "AbGrp"]
+},
+{abbr:"Grp", name:"Groups",
+defn: "monoids expanded with an inverse operation",
+signature:{"\\cdot":[2,"infixomit"], "1":[0], "^{-1}":[1,"postfix",80]},
+axioms:["(xy)z = x(yz)", "x1 = x = 1x", "x^{-1}x = 1 = xx^{-1}"],
+nalgs:{1:1},
+superclasses:["Mon"],
+subclasses:["AbGrp", "pGrp", "BoolGrp"]
+},
+{abbr:"IMon", name:"Idempotent moniods",
+defn: "monoids with an idempotent binary operation",
+signature:{"\\cdot":[2,"infixomit"], "1":[0]},
+axioms:["(xy)z = x(yz)", "x1 = x = 1x", "xx = x"],
+nalgs:{1:1},
+superclasses:["Sgrp"],
+subclasses:["USlat"]
+},
+{abbr:"USlat", name:"Unital semilattice",
+defn: "commutative monoids with an idempotent binary operation",
+signature:{"\\cdot":[2,"infixomit"], "1":[0]},
+axioms:["(xy)z = x(yz)", "x1 = x = 1x", "xx = x"],
+nalgs:{1:1},
+superclasses:["CMon", "IMon"],
+subclasses:["Triv"]
+},
+{abbr:"DuoBin", name:"Duobinars",
+defn: "sets with two binary operations",
+signature:{"+":[2,"infixl",60], "\\cdot":[2,"infixomit",70]},
+axioms:[],
+nalgs:{1:1},
+properties:{},
+superclasses:[],
+subclasses:["Triv"]
+}
+]
+
+/*
+  -[[Action algebras]]
+  -[[Bands]]
+  -[[Basic logic algebras]]
+  -[[BCK-algebras]]
+  -[[Bilattices]]
+  -[[Boolean algebras]]
+  -[[Boolean semigroups]]
+  -[[Brouwerian algebras]]
+  -[[Brouwerian semilattices]]
+  -[[Cylindric algebras]]
+  -[[De Morgan algebras]]
+  -[[De Morgan monoids]]
+  -[[Dioids]]
+  -[[Directoids]]
+  -[[Distributive lattices]]
+  -[[Double p-algebras]]
+  -[[Double Stone algebras]]
+  -[[Dunn monoids]]
+  -[[Equivalence algebras]]
+  -[[FL-algebras]]
+  -[[G-sets]]
+  -[[Generalized BL-algebras]]
+  -[[Generalized Boolean algebras]]
+  -[[Generalized MV-algebras]]
+  -[[Goedel algebras]]
+  -[[Groupoids]]
+  -[[Groups]]
+  -[[Heyting algebras]]
+  -[[Hilbert algebras]]
+  -[[Hoops]]
+  -[[Idempotent semirings]]
+  -[[Implication algebras]]
+  -[[Implicative lattices]]
+  -[[Intuitionistic linear logic algebras]]
+  -[[Inverse semigroups]]
+  -[[Involutive FL-algebras]]
+  -[[Kleene algebras]]
+  -[[Kleene lattices]]
+  -[[Kleene logic algebras]]
+  -[[Lattice-ordered groups]]
+  -[[Lattice-ordered monoids]]
+  -[[Lattice-ordered rings]]
+  -[[Lattices]]
+  -[[Goedel algebras]]
+  -[[Linear logic algebras]]
+  -[[Loops]]
+  -[[Lukasiewicz algebras of order n]]
+  -[[M-sets]]
+  -[[Medial groupoids]]
+  -[[Modal algebras]]
+  -[[Modules over a ring]]
+  -[[Monadic algebras]]
+  -[[Monoids]]
+  -[[Monounary algebras]]
+  -[[MV-algebras]]
+  -[[Near-rings]]
+  -[[Nonassociative relation algebras]]
+  -[[Ockham algebras]]
+  -[[Order algebras]]
+  -[[Ortholattices]]
+  -[[Orthomodular lattices]]
+  -[[Polyadic algebras]]
+  -[[Post algebras]]
+  -[[Process algebras]]
+  -[[Pseudocomplemented distributive lattices]]
+  -[[Pure discriminator algebras]]
+  -[[Quasigroups]]
+  -[[Quasi-implication algebras]]
+  -[[Quasi-MV-algebra]]
+  -[[Relation algebras]]
+  -[[Relative Stone algebras]]
+  -[[Residuated lattice-ordered semigroups]]
+  -[[Residuated lattices]]
+  -[[Rings]]
+  -[[Semigroups]]
+  -[[Semilattices]]
+  -[[Semirings]]
+  -[[Sequential algebras]]
+  -[[Sets]]
+  -[[Shells]]
+  -[[Skew lattices]]
+  -[[Stone algebras]]
+  -[[Tarski algebras]]
+  -[[Tense algebras]]
+*/
