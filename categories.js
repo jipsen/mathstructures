@@ -249,7 +249,7 @@ superclasses:["IDom"],
 subclasses:["Triv"]
 },
 {id:"SkLat", name:"Skew lattices",
-defn: "bands expanded with an associative idempotent operation that satisfy some absorption laws",
+defn: "bands expanded with an associative idempotent operation that satisfy four outer absorption laws",
 signature:{"+":[2,"infixl",60], "\\cdot":[2,"infixomit",70]},
 axioms:["(x\\vee y)\\vee z = x\\vee (y\\vee z)", "x\\vee x = x", "(x\\wedge y)\\wedge z = x\\wedge(y\\wedge z)", "x\\wedge x = x", "x\\wedge(x\\vee y)=x=x\\vee (x\\wedge y)", "(x\\vee y)\\wedge y=y=(x\\wedge y)\\vee y"],
 nalgs:{1:1},
