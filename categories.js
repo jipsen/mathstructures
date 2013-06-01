@@ -276,7 +276,7 @@ superclasses:["Lat"],
 subclasses:["DLat"]
 },
 {id:"DLat", name:"Distributive lattices",
-defn: "lattices with meet distributing over join (or equivalently jion ditributing over meet)",
+defn: "lattices with meet distributing over join (or equivalently join distributing over meet)",
 signature:{"+":[2,"infixl",60], "\\cdot":[2,"infixomit",70]},
 axioms:["(x\\vee y)\\vee z = x\\vee (y\\vee z)", "x\\vee y = y\\vee x", "x\\vee x = x", "(x\\wedge y)\\wedge z = x\\wedge(y\\wedge z)", "x\\wedge y = y\\wedge x", "x\\wedge x = x", "x\\wedge(x\\vee y)=x=x\\vee (x\\wedge y)", "x\\wedge(y\\vee z) = (x\\wedge y)\\vee(x\\wedge z)"],
 nalgs:{1:1},
