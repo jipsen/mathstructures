@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../simple.css" type="text/css" />
+	<title>All vertically indecomposable modular lattices up to size 11</title>
+<script src="MLat_vi_1-11.js"></script>
+<script>
+hasse_diagrams = function(ds) {
+  var hd = document.getElementById("hd");
+  var s = 1 //scale factor in pixel
+  var tx = 0
+  var ty = 0
+  var size = 0
+  for (var k in ds) {
+    uc = ds[k]["uc"];
+    pos = ds[k]["pos"];
+    var br = document.createElement("br");
+    if (Object.keys(pos).length>size) {
+        if (size>5) hd.appendChild(br);
+        size = Object.keys(pos).length;
+    }
+    var cn = document.createElement("canvas");
+    cn.id = "mycanvas";
+    cn.height = "120";
+    cn.width = "120";
+    var c = cn.getContext('2d');
+    hd.appendChild(cn);
+    for (var i in uc) {
+      for (var j=0; j < uc[i].length; j++) {
+        c.beginPath();
+        c.moveTo(s*pos[i][0]+tx,cn.height-s*pos[i][1]-ty);
+        c.lineTo(s*pos[uc[i][j]][0]+tx,cn.height-s*pos[uc[i][j]][1]-ty);
+        c.stroke();
+      }
+    }
+    for (var i in uc) {
+      c.fillStyle="white";
+      c.beginPath();
+      c.arc(s*pos[i][0]+tx,c.canvas.height-s*pos[i][1]-ty,3,0,6.3,true);
+      c.fill();
+      c.stroke();
+    }
+  }
+}
+</script>
+</head>
+<body>
+<div id="container">
+	<div id="header">
+		<h1>
+All vertically indecomposable modular lattices up to size 11
+		</h1>
+	</div>
+	<div id="navigation">
+		<ul>
+			<li><a href="MLat_1-11.html">All modular lattices</a></li>
+			<li><a href="MLat_vi_1-11.html">Vertically indecomposable</a></li>
+			<li><a href="MLat_si_1-11.html">Subdirectly irreducible</a></li>
+			<li><a href="../contact.html">Contact</a></li>
+		</ul>
+	</div>
+	<div id="content">
+		<h2>
+Ordered by number of elements
+		</h2>
+<div id="hd">
+</div>
+<script>
+hasse_diagrams(MLat)
+</script>
+	<div id="footer">
+		Peter Jipsen - Chapman University - May 2013
+	</div>
+</div>
+</body>
+</html>
