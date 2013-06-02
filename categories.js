@@ -60,6 +60,7 @@ subclasses:["Slat"]
 {id:"Slat", name:"Semilattices", 
 defn: "semigroups with an idempotent operation",
 signature:{"\\cdot":[2,"infixomit",70]},
+bgtheory:"Bnd",
 axioms:["(xy)z = x(yz)", "xy = yx", "xx = x"],
 nalgs:{1:1},
 properties:{locally_finite:"true"},
@@ -82,6 +83,15 @@ nalgs:{1:1},
 superclasses:["Mon"],
 subclasses:["USlat", "AbGrp"]
 },
+{id:"MV", name:"MV-algebras",
+defn: "commutative monoids with a unary involution that satisfies two more equations",
+signature:{"\\oplus":[2,"infixl",60], "\\neg":[1,"prefix",90]},
+axioms:["(x\\oplus y)\\oplus z = x\\oplus (y\\oplus z)", "x\\oplus 0 = x", "\\neg\\neg x = x", "x\\oplus\\neg 0 = \\neg 0", "\\neg(\\neg x\\oplus y)\\oplus y = \\neg(\\neg y\\oplus x)\\oplus x"],
+nalgs:{1:1},
+properties:{},
+superclasses:["CMon"],
+subclasses:["BA"]
+},
 {id:"Grp", name:"Groups",
 defn: "monoids expanded with an inverse operation",
 signature:{"\\cdot":[2,"infixomit"], "1":[0], "^{-1}":[1,"postfix",80]},
@@ -93,6 +103,7 @@ subclasses:["AbGrp"]
 {id:"AbGrp", name:"Abelian groups",
 defn: "groups with a commutative binary operation",
 signature:{"\\cdot":[2,"infixomit"], "1":[0], "^{-1}":[1,"postfix",80]},
+bgtheory:"Grp",
 axioms:["(xy)z = x(yz)", "x1 = x = 1x", "x^{-1}x = 1 = xx^{-1}", "xy = yx"],
 nalgs:{1:1},
 superclasses:["Grp"],
@@ -101,6 +112,7 @@ subclasses:["BoolGrp"]
 {id:"BoolGrp", name:"Boolean groups",
 defn: "groups with an order-2 binary operation",
 signature:{"\\cdot":[2,"infixomit"], "1":[0], "^{-1}":[1,"postfix",80]},
+bgtheory:"Grp",
 axioms:["(xy)z = x(yz)", "x1 = x = 1x", "x^{-1}x = 1 = xx^{-1}", "xx = 1"],
 nalgs:{1:1, 2:1, 3:0, 4:1, 5:0, 6:0, 7:0, 8:1},
 superclasses:["AbGrp"],
@@ -109,6 +121,7 @@ subclasses:["Triv"]
 {id:"IMon", name:"Idempotent moniods",
 defn: "monoids with an idempotent binary operation",
 signature:{"\\cdot":[2,"infixomit"], "1":[0]},
+bgtheory:"Mon",
 axioms:["(xy)z = x(yz)", "x1 = x = 1x", "xx = x"],
 nalgs:{1:1},
 superclasses:["Mon"],
@@ -117,10 +130,28 @@ subclasses:["USlat"]
 {id:"USlat", name:"Unital semilattices",
 defn: "commutative monoids with an idempotent binary operation",
 signature:{"\\cdot":[2,"infixomit"], "1":[0]},
+bgtheory:"Slat",
 axioms:["(xy)z = x(yz)", "xy = yx", "x1 = x = 1x", "xx = x"],
 nalgs:{1:1},
 superclasses:["CMon", "IMon"],
 subclasses:["Triv"]
+},
+{id:"Drctd", name:"Directoids",
+defn: "posets where $xy = \\min(x,y)$ if $x\\le y$ or $y\\le x$, else $xy\\le x,y$",
+signature:{"\\cdot":[2,"infixomit"], "1":[0]},
+axioms:["x((xy)z) = (xy)z", "(xy)x = xy = y(xy)", "xx = x"],
+nalgs:{1:1},
+superclasses:["Bin"],
+subclasses:["CDrctd"]
+},
+{id:"CDrctd", name:"Commutative directoids",
+defn: "directoids with a commutative operation",
+signature:{"\\cdot":[2,"infixomit"], "1":[0]},
+bgtheory:"Drctd",
+axioms:["x((xy)z) = (xy)z", "(xy)x = xy", "xy = yx", "xx = x"],
+nalgs:{1:1},
+superclasses:["Drctd"],
+subclasses:["Sgrp"]
 },
 {id:"DuoBin", name:"Duobinars",
 defn: "sets with two binary operations",
@@ -152,6 +183,7 @@ subclasses:["USrng", "ZSrng"]
 {id:"ISrng", name:"Idempotent semirings",
 defn: "semirings with an idempotent additive operation",
 signature:{"+":[2,"infixl",60], "\\cdot":[2,"infixomit",70]},
+bgtheory:"Srng",
 axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "x+x = x", "(xy)z = x(yz)", "x(y+z) = xy + xz", "(x+y)z = xz + yz"],
 nalgs:{1:1},
 properties:{},
@@ -161,6 +193,7 @@ subclasses:["IUSrng", "IZSrng"]
 {id:"USrng", name:"Unital semirings",
 defn: "semirings expanded with an identity element",
 signature:{"+":[2,"infixl",60], "\\cdot":[2,"infixomit",70], "1":[0]},
+bgtheory:"Srng",
 axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "(xy)z = x(yz)", "x(y+z) = xy + xz", "(x+y)z = xz + yz", "x1 = x = 1x"],
 nalgs:{1:1},
 properties:{},
@@ -169,6 +202,7 @@ subclasses:["UZSrng"]
 },
 {id:"ZSrng", name:"Zero semirings",
 defn: "semirings expanded with an additive identity that is a multiplicative zero",
+bgtheory:"Srng",
 signature:{"+":[2,"infixl",60], "0":[0], "\\cdot":[2,"infixomit",70]},
 axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "(xy)z = x(yz)", "x(y+z) = xy + xz", "(x+y)z = xz + yz", "x+0 = x", "x0 = 0 = 0x"],
 nalgs:{1:1},
@@ -179,7 +213,8 @@ subclasses:["UZSrng"]
 {id:"UZSrng", name:"Unital zero semirings",
 defn: "zero semirings expanded with a multiplicative identity",
 signature:{"+":[2,"infixl",60], "0":[0], "\\cdot":[2,"infixomit",70], "1":[0]},
-axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "(xy)z = x(yz)", "x(y+z) = xy + xz", "(x+y)z = xz + yz", "x+0 = x = 0+x", "x0 = 0 = 0x", "x1 = x = 1x"],
+bgtheory:"Srng",
+axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "(xy)z = x(yz)", "x(y+z) = xy + xz", "(x+y)z = xz + yz", "x+0 = x", "x0 = 0 = 0x", "x1 = x = 1x"],
 nalgs:{1:1},
 properties:{},
 superclasses:["USrng", "ZSrng", "Shll"],
@@ -188,15 +223,17 @@ subclasses:["URng"]
 {id:"Dio", name:"Dioids",
 defn: "idempotent unital zero semirings",
 signature:{"+":[2,"infixl",60], "0":[0], "\\cdot":[2,"infixomit",70], "1":[0]},
-axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "x+x = x", "(xy)z = x(yz)", "x(y+z) = xy + xz", "(x+y)z = xz + yz", "x+0 = x = 0+x", "x0 = 0 = 0x", "x1 = x = 1x"],
+bgtheory:"UZSrng",
+axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "x+x = x", "(xy)z = x(yz)", "x(y+z) = xy + xz", "(x+y)z = xz + yz", "x+0 = x", "x0 = 0 = 0x", "x1 = x = 1x"],
 nalgs:{1:1},
 properties:{},
-superclasses:["UZSrng"],
+superclasses:["UZSrng", "ISrng"],
 subclasses:["Triv"]
 },
 {id:"Rng", name:"Rings",
 defn: "zero semirings expanded with an additive inverse operation",
 signature:{"+":[2,"infixl",60], "0":[0], "-":[1,"prefix",90], "\\cdot":[2,"infixomit",70]},
+bgtheory:"Srng",
 axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "x+0 = x", "-x+x = 0", "(xy)z = x(yz)", "x(y+z) = xy + xz", "(x+y)z = xz + yz"],
 nalgs:{1:1},
 properties:{},
@@ -206,6 +243,7 @@ subclasses:["URng"]
 {id:"CRng", name:"Commutative rings",
 defn: "rings with a commutative multiplication",
 signature:{"+":[2,"infixl",60], "0":[0], "-":[1,"prefix",90], "\\cdot":[2,"infixomit",70]},
+bgtheory:"Rng",
 axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "x+0 = x", "-x+x = 0", "(xy)z = x(yz)", "xy = yx", "x(y+z) = xy + xz"],
 nalgs:{1:1},
 properties:{},
@@ -215,7 +253,8 @@ subclasses:["CURng"]
 {id:"URng", name:"Unital rings",
 defn: "rings expanded with a multiplicative identity element",
 signature:{"+":[2,"infixl",60], "0":[0], "-":[1,"prefix",90], "\\cdot":[2,"infixomit",70], "1":[0]},
-axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "(xy)z = x(yz)", "x(y+z) = xy + xz", "(x+y)z = xz + yz", "x+0 = x = 0+x", "x+-x = 0 = -x+x", "x1 = x = 1x"],
+bgtheory:"Rng",
+axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "(xy)z = x(yz)", "x(y+z) = xy + xz", "(x+y)z = xz + yz", "x+0 = x", "-x+x = 0", "x1 = x = 1x"],
 nalgs:{1:1},
 properties:{},
 superclasses:["Rng"],
@@ -224,6 +263,7 @@ subclasses:["CURng"]
 {id:"CURng", name:"Commutative unital rings",
 defn: "unital rings with a commutative multiplication",
 signature:{"+":[2,"infixl",60], "0":[0], "-":[1,"prefix",90], "\\cdot":[2,"infixomit",70], "1":[0]},
+bgtheory:"Rng",
 axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "x+0 = x", "-x+x = 0", "(xy)z = x(yz)", "xy = yx", "x(y+z) = xy + xz", "x1 = x"],
 nalgs:{1:1},
 properties:{},
@@ -232,6 +272,7 @@ subclasses:["IDom"]
 },
 {id:"IDom", name:"Integral domains",
 defn: "commutative unital rings such that if a product is zero then one of the factors is zero",
+bgtheory:"CURng",
 signature:{"+":[2,"infixl",60], "0":[0], "-":[1,"prefix",90], "\\cdot":[2,"infixomit",70], "1":[0]},
 axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "x+0 = x", "-x+x = 0", "(xy)z = x(yz)", "xy = yx", "x(y+z) = xy + xz", "x1 = x", "xy = 0 \\implies x = 0 \\text{ or } y = 0"],
 nalgs:{1:1},
@@ -241,6 +282,7 @@ subclasses:["Fld"]
 },
 {id:"Fld", name:"Fields",
 defn: "commutative unital rings such that any nonzero element has a multiplicative inverse and 0,1 are distinct",
+bgtheory:"CURng",
 signature:{"+":[2,"infixl",60], "0":[0], "-":[1,"prefix",90], "\\cdot":[2,"infixomit",70], "1":[0], "^{-1}":[1, "postfix"]},
 axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "x+0 = x", "-x+x = 0", "(xy)z = x(yz)", "xy = yx", "x(y+z) = xy + xz", "x1 = x", "x \\ne 0 \\implies xx^{-1} = 1", "0\\ne 1"],
 nalgs:{1:1},
@@ -248,18 +290,28 @@ properties:{},
 superclasses:["IDom"],
 subclasses:["Triv"]
 },
-{id:"SkLat", name:"Skew lattices",
-defn: "bands expanded with an associative idempotent operation that satisfy four outer absorption laws",
-signature:{"+":[2,"infixl",60], "\\cdot":[2,"infixomit",70]},
-axioms:["(x\\vee y)\\vee z = x\\vee (y\\vee z)", "x\\vee x = x", "(x\\wedge y)\\wedge z = x\\wedge(y\\wedge z)", "x\\wedge x = x", "x\\wedge(x\\vee y)=x=x\\vee (x\\wedge y)", "(x\\vee y)\\wedge y=y=(x\\wedge y)\\vee y"],
+{id:"$\\lambda$Lat", name:"$\\lambda$-lattices",
+defn: "sets with two commutative operations that satisfy some absorption laws",
+refs: "Snasel [1997], Kopytov and Dimitrov [1989]",
+signature:{"\\vee":[2,"infixl",60], "\\wedge":[2,"infixl",60]},
+axioms:["x\\vee y = y\\vee x", "x\\wedge y = y\\wedge x", "x\\vee((x\\vee y)\\vee z) = (x\\vee y)\\vee z", "x\\wedge((x\\wedge y)\\wedge z) = (x\\wedge y)\\wedge z", "x\\wedge(x\\vee y) = x = x\\vee (x\\wedge y)"],
 nalgs:{1:1},
 properties:{},
-superclasses:["Bnd"],
+superclasses:["DuoBin"],
+subclasses:["Lat"]
+},
+{id:"SkLat", name:"Skew lattices",
+defn: "bands expanded with an associative idempotent operation that satisfies four outer absorption laws",
+signature:{"\\vee":[2,"infixl",60], "\\wedge":[2,"infixl",60]},
+axioms:["(x\\vee y)\\vee z = x\\vee (y\\vee z)", "x\\vee x = x", "(x\\wedge y)\\wedge z = x\\wedge(y\\wedge z)", "x\\wedge x = x", "x\\wedge(x\\vee y) = x = x\\vee (x\\wedge y)", "(x\\vee y)\\wedge y = y = (x\\wedge y)\\vee y"],
+nalgs:{1:1},
+properties:{},
+superclasses:["DuoBin"],
 subclasses:["Lat"]
 },
 {id:"Lat", name:"Lattices",
 defn: "skew lattices with both operations commutative",
-signature:{"+":[2,"infixl",60], "\\cdot":[2,"infixomit",70]},
+signature:{"\\vee":[2,"infixl",60], "\\wedge":[2,"infixl",60]},
 axioms:["(x\\vee y)\\vee z = x\\vee (y\\vee z)", "x\\vee y = y\\vee x", "x\\vee x = x", "(x\\wedge y)\\wedge z = x\\wedge(y\\wedge z)", "x\\wedge y = y\\wedge x", "x\\wedge x = x", "x\\wedge(x\\vee y)=x=x\\vee (x\\wedge y)"],
 nalgs:{1:1},
 properties:{},
@@ -268,7 +320,8 @@ subclasses:["MLat"]
 },
 {id:"MLat", name:"Modular lattices",
 defn: "lattices that satisfy the modular law",
-signature:{"+":[2,"infixl",60], "\\cdot":[2,"infixomit",70]},
+signature:{"\\vee":[2,"infixl",60], "\\wedge":[2,"infixl",60]},
+bgtheory:"Lat",
 axioms:["(x\\vee y)\\vee z = x\\vee (y\\vee z)", "x\\vee y = y\\vee x", "x\\vee x = x", "(x\\wedge y)\\wedge z = x\\wedge(y\\wedge z)", "x\\wedge y = y\\wedge x", "x\\wedge x = x", "x\\wedge(x\\vee y)=x=x\\vee (x\\wedge y)", "x\\wedge(y\\vee (x\\wedge z)) = (x\\wedge y)\\vee(x\\wedge z)"],
 nalgs:{1:1},
 properties:{},
@@ -277,7 +330,8 @@ subclasses:["DLat"]
 },
 {id:"DLat", name:"Distributive lattices",
 defn: "lattices with meet distributing over join (or equivalently join distributing over meet)",
-signature:{"+":[2,"infixl",60], "\\cdot":[2,"infixomit",70]},
+signature:{"\\vee":[2,"infixl",60], "\\wedge":[2,"infixl",60]},
+bgtheory:"Lat",
 axioms:["(x\\vee y)\\vee z = x\\vee (y\\vee z)", "x\\vee y = y\\vee x", "x\\vee x = x", "(x\\wedge y)\\wedge z = x\\wedge(y\\wedge z)", "x\\wedge y = y\\wedge x", "x\\wedge x = x", "x\\wedge(x\\vee y)=x=x\\vee (x\\wedge y)", "x\\wedge(y\\vee z) = (x\\wedge y)\\vee(x\\wedge z)"],
 nalgs:{1:1},
 properties:{},
@@ -285,6 +339,14 @@ superclasses:["MLat"],
 subclasses:["Triv"]
 }
 ]
+
+differenceList = function(L1, L2){
+    var L3 = [];
+    for (i in L1) {
+	if (L2.indexOf(L1[i])==-1) L3.push(L1[i]);
+    }
+    return L3;
+}
 
 displayCategories = function(){
   var ms = document.getElementById("ms");
@@ -307,7 +369,10 @@ displayCategories = function(){
     elt.style.cssText = "margin-left: "+(2*cts[c]["indent"])+"em"
     st = "<b><a href=\"http://en.wikipedia.org/wiki/"+cts[c].name+"\">"+
        cts[c].name+"</a></b> (<b>"+cts[c].id+"</b>): "+cts[c].defn+
-       (len!=0?"<br/>Axioms: $":"")+cts[c].axioms.join("$, $")+(len!=0?"$":"");
+       (len!=0?"<br/>Axioms: ":"")+
+       ("bgtheory" in cts[c]?"<b>"+cts[c].bgtheory+"</b> and $"+
+	differenceList(cts[c].axioms,idx[cts[c].bgtheory].axioms).join("$, $"):
+        (len!=0?"$":"")+cts[c].axioms.join("$, $"))+(len!=0?"$":"");
     elt.innerHTML = st;
     ms.appendChild(elt);
   }
