@@ -8,7 +8,7 @@ nalgs:{1:1,2:1,3:1,4:1,5:1},
 superclasses:[],
 subclasses:[]
 },
-{id:"MonoUn", name:"Monounary algebras", 
+{id:"Alg(1)", name:"Monounary algebras", 
 defn: "sets with a unary operation",
 signature:{"f":[1,"prefix"]},
 axioms:[],
@@ -16,7 +16,7 @@ nalgs:{1:1},
 superclasses:[],
 subclasses:[]
 },
-{id:"DuoUn", name:"Duounary algebras", 
+{id:"Alg(1,1)", name:"Duounary algebras", 
 defn: "sets with two unary operations",
 signature:{"f":[1,"prefix"], "g":[1,"prefix"]},
 axioms:[],
@@ -24,7 +24,7 @@ nalgs:{1:1},
 superclasses:[],
 subclasses:["MonoUn"]
 },
-{id:"Bin", name:"Binars", 
+{id:"Alg(2)", name:"Binars", 
 defn: "sets with a binary operation",
 signature:{"\\cdot":[2,"infixomit"]},
 axioms:[],
@@ -37,7 +37,7 @@ defn: "sets with an associative binary operation",
 signature:{"\\cdot":[2,"infixomit",70]},
 axioms:["(xy)z = x(yz)"],
 nalgs:{1:1},
-superclasses:["Bin"],
+superclasses:["Alg(2)"],
 subclasses:["Bnd","CSgrp"]
 },
 {id:"CSgrp", name:"Commutative semigroups", 
@@ -141,7 +141,7 @@ defn: "posets where $xy = \\min(x,y)$ if $x\\le y$ or $y\\le x$, else $xy\\le x,
 signature:{"\\cdot":[2,"infixomit"], "1":[0]},
 axioms:["x((xy)z) = (xy)z", "(xy)x = xy = y(xy)", "xx = x"],
 nalgs:{1:1},
-superclasses:["Bin"],
+superclasses:["Alg(2)"],
 subclasses:["CDrctd"]
 },
 {id:"CDrctd", name:"Commutative directoids",
@@ -153,7 +153,7 @@ nalgs:{1:1},
 superclasses:["Drctd"],
 subclasses:["Sgrp"]
 },
-{id:"DuoBin", name:"Duobinars",
+{id:"Alg(2,2)", name:"Duobinars",
 defn: "sets with two binary operations",
 signature:{"+":[2,"infixl",60], "\\cdot":[2,"infixomit",70]},
 axioms:[],
@@ -168,7 +168,7 @@ signature:{"+":[2,"infixl",60], "0":[0], "\\cdot":[2,"infixomit",70], "1":[0]},
 axioms:["x+0 = x = 0+x", "x1 = x = 1x", "x0 = 0 = 0x"],
 nalgs:{1:1},
 properties:{},
-superclasses:["DuoBin"],
+superclasses:["Alg(2,2)"],
 subclasses:["UZSrng"]
 },
 {id:"Srng", name:"Semirings",
@@ -177,7 +177,7 @@ signature:{"+":[2,"infixl",60], "\\cdot":[2,"infixomit",70]},
 axioms:["(x+y)+z = x+(y+z)", "x+y = y+x", "(xy)z = x(yz)", "x(y+z) = xy + xz", "(x+y)z = xz + yz"],
 nalgs:{1:1},
 properties:{},
-superclasses:["DuoBin"],
+superclasses:["Alg(2,2)"],
 subclasses:["USrng", "ZSrng"]
 },
 {id:"ISrng", name:"Idempotent semirings",
@@ -297,7 +297,7 @@ signature:{"\\vee":[2,"infixl",60], "\\wedge":[2,"infixl",60]},
 axioms:["x\\vee y = y\\vee x", "x\\wedge y = y\\wedge x", "x\\vee((x\\vee y)\\vee z) = (x\\vee y)\\vee z", "x\\wedge((x\\wedge y)\\wedge z) = (x\\wedge y)\\wedge z", "x\\wedge(x\\vee y) = x = x\\vee (x\\wedge y)"],
 nalgs:{1:1},
 properties:{},
-superclasses:["DuoBin"],
+superclasses:["Alg(2,2)"],
 subclasses:["Lat"]
 },
 {id:"SkLat", name:"Skew lattices",
@@ -306,7 +306,7 @@ signature:{"\\vee":[2,"infixl",60], "\\wedge":[2,"infixl",60]},
 axioms:["(x\\vee y)\\vee z = x\\vee (y\\vee z)", "x\\vee x = x", "(x\\wedge y)\\wedge z = x\\wedge(y\\wedge z)", "x\\wedge x = x", "x\\wedge(x\\vee y) = x = x\\vee (x\\wedge y)", "(x\\vee y)\\wedge y = y = (x\\wedge y)\\vee y"],
 nalgs:{1:1},
 properties:{},
-superclasses:["DuoBin"],
+superclasses:["Alg(2,2)"],
 subclasses:["Lat"]
 },
 {id:"Lat", name:"Lattices",
@@ -379,11 +379,17 @@ displayCategories = function(){
   MathJax.Hub.Queue(["Typeset",MathJax.Hub,"ms"])
 }
 
+latextrim = function(st){
+    // remove $ and \ symbols from strings and upcase
+    return st.replace(/\$|\\/g,'').toUpperCase()
+}
+
 displayCategoriesAtoZ = function(){
   var ms = document.getElementById("ms");
   var cts = categories;
   var elt, st, c, ind, sc, idx = {};
-  cts.sort(function(a, b) {return a.name > b.name ? 1 : -1;});
+  cts.sort(function(a, b) {
+      return latextrim(a.name) > latextrim(b.name)?1:-1;});
   for (c in cts) {
     len = cts[c].axioms.length;
     elt = document.createElement("li");
