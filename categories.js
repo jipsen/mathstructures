@@ -487,7 +487,17 @@ categories =
 "nmodels":[1, 1, 3, 16, 81],
 "properties":{},
 "superclasses":["RL", "DLat"],
-"subclasses":["CDRL", "DIRL"]
+"subclasses":["CDRL", "DIRL", "GBLAlg"]
+},
+{"id":"GBLAlg", "name":"Generalized basic logic algebras",
+"defn": "residuated lattices that satisfy divisibility",
+"signature":{"\\vee":[2,"infixl",60], "\\wedge":[2,"infixl",60], "\\cdot":[2,"infixomit",70], "1":[1], "\\backslash":[2,"infixr",50], "/":[2,"infixr",50]},
+"bgtheory":"RL",
+"axioms":["(x\\vee y)\\vee z = x\\vee (y\\vee z)", "x\\vee y = y\\vee x", "x\\vee x = x", "(x\\wedge y)\\wedge z = x\\wedge(y\\wedge z)", "x\\wedge y = y\\wedge x", "x\\wedge x = x", "x\\wedge(x\\vee y) = x = x\\vee(x\\wedge y)", "(xy)z = x(yz)", "x1 = x = 1x", "x = x\\wedge((xy \\vee z)/y)", "x = x\\wedge(y\\backslash(yx \\vee z))", "(x/y)y \\vee x = x", "y(y\\backslash x) \\vee x = x", "x\\wedgey = y\\cdot(y\\backslash (x\\wedge y))", "x\\wedgey = ((x\\wedge y)/y)\\cdot y"],
+"nmodels":[1],
+"properties":{},
+"superclasses":["DRL"],
+"subclasses":["BrouwA"]
 },
 {"id":"CDRL", "name":"Commutative distributive residuated lattices",
 "defn": "distributive residuated lattices with a commutative monoid operation",
@@ -535,7 +545,7 @@ categories =
 "axioms":["(x\\vee y)\\vee z = x\\vee (y\\vee z)", "x\\vee y = y\\vee x", "x\\vee x = x", "(x\\wedge y)\\wedge z = x\\wedge(y\\wedge z)", "x\\wedge y = y\\wedge x", "x\\wedge x = x", "x\\wedge(x\\vee y) = x = x\\vee(x\\wedge y)", "x\\wedge 1 = x", "x\\to x = 1", "x\\wedge(x\\to y) = x\\wedge y", "(x\\to y)\\wedge y = y", "x\\to(y\\wedge z) = (x\\to y)\\wedge(x\\to z)"],
 "nmodels":["DLat"],
 "properties":{},
-"superclasses":["CDIRL", "DLat"],
+"superclasses":["CDIRL", "DLat", "GBLAlg"],
 "subclasses":["HA"]
 },
 {"id":"HA", "name":"Heyting algebras",
@@ -566,6 +576,36 @@ categories =
 "nmodels":"1 if $\\ \\exists k\\ n=2^k$ else 0",
 "properties":{},
 "superclasses":["GAlg", "MV"],
+"subclasses":["ModalA"]
+},
+{"id":"ModalA", "name":"Modal algebras",
+"defn": "Boolean algebras with a unary operation that distributes over all finite joins",
+"signature":{"\\vee":[2,"infixl",60], "0":[0], "\\wedge":[2,"infixl",60], "1":[1], "\\neg":[1,"prefix",65], "f":[1,"prefix",65]},
+"bgtheory":"BA",
+"axioms":["(x\\vee y)\\vee z = x\\vee (y\\vee z)", "x\\vee y = y\\vee x", "x\\vee x = x", "(x\\wedge y)\\wedge z = x\\wedge(y\\wedge z)", "x\\wedge y = y\\wedge x", "x\\wedge x = x", "x\\wedge(x\\vee y) = x = x\\vee(x\\wedge y)", "x\\wedge(y\\vee z) = (x\\wedge y)\\vee(x\\wedge z)", "x\\vee\\neg x = 1", "x\\wedge\\neg x = 0", "f(x\\vee y) = f(x)\\vee f(y)", "f(0) = 0"],
+"nmodels":[1],
+"properties":{},
+"superclasses":["BA"],
+"subclasses":["CloA"]
+},
+{"id":"CloA", "name":"Closure algebras",
+"defn": "Modal algebras where the operator is increasing and idempotent",
+"signature":{"\\vee":[2,"infixl",60], "0":[0], "\\wedge":[2,"infixl",60], "1":[1], "\\neg":[1,"prefix",65], "f":[1,"prefix",65]},
+"bgtheory":"ModalA",
+"axioms":["(x\\vee y)\\vee z = x\\vee (y\\vee z)", "x\\vee y = y\\vee x", "x\\vee x = x", "(x\\wedge y)\\wedge z = x\\wedge(y\\wedge z)", "x\\wedge y = y\\wedge x", "x\\wedge x = x", "x\\wedge(x\\vee y) = x = x\\vee(x\\wedge y)", "x\\wedge(y\\vee z) = (x\\wedge y)\\vee(x\\wedge z)", "x\\vee\\neg x = 1", "x\\wedge\\neg x = 0", "f(x\\vee y) = f(x)\\vee f(y)", "f(0) = 0", "x\\le f(x)", "f(f(x)) = f(x)"],
+"nmodels":[1],
+"properties":{},
+"superclasses":["ModalA"],
+"subclasses":["MondcA"]
+},
+{"id":"MondcA", "name":"Monadic algebras",
+"defn": "Closure algebras where the operator commutes with complementation",
+"signature":{"\\vee":[2,"infixl",60], "0":[0], "\\wedge":[2,"infixl",60], "1":[1], "\\neg":[1,"prefix",65], "f":[1,"prefix",65]},
+"bgtheory":"CloA",
+"axioms":["(x\\vee y)\\vee z = x\\vee (y\\vee z)", "x\\vee y = y\\vee x", "x\\vee x = x", "(x\\wedge y)\\wedge z = x\\wedge(y\\wedge z)", "x\\wedge y = y\\wedge x", "x\\wedge x = x", "x\\wedge(x\\vee y) = x = x\\vee(x\\wedge y)", "x\\wedge(y\\vee z) = (x\\wedge y)\\vee(x\\wedge z)", "x\\vee\\neg x = 1", "x\\wedge\\neg x = 0", "f(x\\vee y) = f(x)\\vee f(y)", "f(0) = 0", "x\\le f(x)", "f(f(x)) = f(x)", "\\neg f(x) = f(\\neg x)"],
+"nmodels":[1],
+"properties":{},
+"superclasses":["CloA"],
 "subclasses":["Triv"]
 },
 {"id":"Triv", "name":"Trivial algebras",
@@ -574,7 +614,7 @@ categories =
 "axioms":["x=y"],
 "nmodels":"1 if $n=1$ else 0",
 "properties":{},
-"superclasses":["BA", "BoolGrp", "Dio", "Fld", "USlat"],
+"superclasses":["MondcA", "BoolGrp", "Dio", "Fld", "USlat"],
 "subclasses":[]
 }
 ]
