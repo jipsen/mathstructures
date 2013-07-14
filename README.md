@@ -10,24 +10,27 @@ There are two formats, one for describing small first-order structures
 categories of structures by untyped first-order (or higher-order) axioms.
 
 The format for finite structures is a key:value list (native JSON/Python 
-syntax and easily parsable in other languages). Each key (n1, n2, ...) is 
+syntax and easily parsable in other languages). Each key (m1, m2, ...) is 
 a unique identifier for the corresponding structure within its collection.
 
 {
-n1:{
-cardinality:2, 
-operations:{"\\cdot":[[0,0],[0,1]], "1":1}, 
-relations:{"\\le":[[1,1],[0,1]], "\\prec":{0:[1],1:[]}},
-mingens:[0],
-names:{0:"\\bot",1:"\\top"},
-properties:["P", "Q"],
-maxsubs:[n2, n3],
-minsups:[n4, n5],
-maxhomimgs:[n6, n7]
+m1:{
+"cardinality":2, 
+"bgalg":["Cat",k1], // optional
+"operations":{"\\cdot":[[0,0],[0,1]], "1":1}, // optional
+"relations":{"\\le":[[1,1],[0,1]], "\\prec":{0:[1],1:[]}}, // optional
+"mingens":[0],
+"names":{0:"\\bot",1:"\\top"},
+"positions":[[x1,y1],[x2,y2],...], // optional or "positions3d" with view vector
+"properties":{"P":"True", "Q":"False", ...},
+"autgens":[],
+"maxsubs":[[n2,[...]], [n3,[...]], ...],
+"maxhomimgs":[[n4,[...]], [n5,[...]], ...]
 },
-n2:{
+m2:{
 ...
-}
+},
+...
 }
 
 where n1, n2, ... are nonnegative integers.

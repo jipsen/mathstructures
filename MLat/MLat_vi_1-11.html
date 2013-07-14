@@ -18,7 +18,7 @@ hasse_diagrams = function(ds) {
     pos = ds[k]["pos"];
     var br = document.createElement("br");
     if (Object.keys(pos).length>size) {
-        if (size>5) hd.appendChild(br);
+        if (size>6) hd.appendChild(br);
         size = Object.keys(pos).length;
     }
     var cn = document.createElement("canvas");
