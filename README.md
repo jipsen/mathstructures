@@ -13,24 +13,24 @@ The format for finite structures is a key:value list (native JSON/Python
 syntax and easily parsable in other languages). Each key (m1, m2, ...) is 
 a unique identifier for the corresponding structure within its collection.
 
-{
-m1:{
-"cardinality":2, 
-"bgalg":["Cat",k1], // optional
-"operations":{"\\cdot":[[0,0],[0,1]], "1":1}, // optional
-"relations":{"\\le":[[1,1],[0,1]], "\\prec":{0:[1],1:[]}}, // optional
-"mingens":[0],
-"names":{0:"\\bot",1:"\\top"},
-"positions":[[x1,y1],[x2,y2],...], // optional or "positions3d" with view vector
-"properties":{"P":"True", "Q":"False", ...},
-"autgens":[],
-"maxsubs":[[n2,[...]], [n3,[...]], ...],
-"maxhomimgs":[[n4,[...]], [n5,[...]], ...]
-},
-m2:{
-...
-},
-...
+{<br>
+m1:{<br>
+"cardinality":2,<br> 
+"bgalg":["Cat",k1], // optional background algebra that is being expanded here<br>
+"operations":{"\\cdot":[[0,0],[0,1]], "1":1}, // optional<br>
+"relations":{"\\le":[[1,1],[0,1]], "\\prec":{0:[1],1:[]}}, // optional<br>
+"mingens":[0],<br>
+"names":{0:"\\bot",1:"\\top"},<br>
+"positions":[[x1,y1],[x2,y2],...], // optional or "positions3d" with view vector<br>
+"properties":{"P":"True", "Q":"False", ...},<br>
+"autgens":[],<br>
+"maxsubs":[[n2,[...]], [n3,[...]], ...],<br>
+"maxhomimgs":[[n4,[...]], [n5,[...]], ...]<br>
+},<br>
+m2:{<br>
+...<br>
+},<br>
+...<br>
 }
 
 where n1, n2, ... are nonnegative integers.
@@ -38,16 +38,16 @@ where n1, n2, ... are nonnegative integers.
 The format for categories is similar, but based on syntactic axiomatic
 descriptions:
 
-[
-{id:"Abbr", name:"Long name",
-defn:"brief english definition",
-signature:{},
-bgtheory:"Abbr1",
-axioms:["x = y",... irredundant list of axioms],
-superclasses:[],
-subclasses:[],
-},
-{id:"",
-...
-}
+[<br>
+{id:"Abbr", name:"Long name",<br>
+defn:"brief english definition",<br>
+signature:{},<br>
+bgtheory:"Abbr1",<br>
+axioms:["x = y",... irredundant list of axioms],<br>
+superclasses:[],<br>
+subclasses:[],<br>
+},<br>
+{id:"",<br>
+...<br>
+}<br>
 ]
