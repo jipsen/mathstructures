@@ -12,32 +12,32 @@ signature for operation and relation symbols. Free variables in axioms are assum
 When a category extends (several) other categories, the unicode symbols in the signature can be renamed.
 
 5. List of the main categories that are used as base categories for subcategories and extensions:
-  * Alg(n1,n2,...)     category of algebras with operations of arity n1 >= n2 >= ...
-  * Semigroups
-  * Monoids
-  * Groups
-  * Semirings
-  * Rings
-  * Fields
-  * Semilattices
-  * Lattices
-  * Bounded lattices
-  * Distributive lattices
-  * Bounded distributive lattices
-  * Heyting algebras
-  * Boolean algebras
-  * Residuated lattices
-  * FL-algebras
-  * Partially ordered sets
-  * Totally ordered sets
-  * Vector spaces
-  * Vector lattices
-  * Algebras
-  * Coalgebras
-  * Partial algebras
-  * Topological spaces
-  * Frames
-  * ...
+ * Alg(n1,n2,...) category of algebras with operations of arity n1 ≥ n2 ≥ ...
+ * Semigroups
+ * Monoids
+ * Groups
+ * Semirings
+ * Rings
+ * Fields
+ * Semilattices
+ * Lattices
+ * Bounded lattices
+ * Distributive lattices
+ * Bounded distributive lattices
+ * Heyting algebras
+ * Boolean algebras
+ * Residuated lattices
+ * FL-algebras
+ * Partially ordered sets
+ * Totally ordered sets
+ * Vector spaces
+ * Vector lattices
+ * Algebras
+ * Coalgebras
+ * Partial algebras
+ * Topological spaces
+ * Frames
+ * ...
 
 6. Each base category has its own HTML page with direct links to all subcategories and extension categories.
 These associated categories are defined in a single JSON file.
