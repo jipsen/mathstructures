@@ -1,0 +1,27 @@
+Notes about redesigning the mathstructures pages
+
+1. Move them to github
+
+2. Use JSON for data about categories, objects and morphisms
+
+3. Define a category by extending other categories with additional operations, relations and axioms
+
+4. Allow several equivalent definitions
+
+5. Main categories that are used as base categories for extensions:
+  * Alg(n1,n2,...)     category of algebras with operations of arity n1,n2,...
+  * Semigroups
+  * Monoids
+  * Groups
+  * Semirings
+  * Rings
+  * Fields
+  * Lattices
+  * Bounded lattices
+  * Distributive lattices
+  * Bounded distributive lattices
+  * Heyting algebras
+  * Boolean algebras
+  * Residuated lattices
+  * FL-algebras
+  
