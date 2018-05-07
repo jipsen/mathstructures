@@ -24,4 +24,6 @@ Notes about redesigning the mathstructures pages
   * Boolean algebras
   * Residuated lattices
   * FL-algebras
-  
+  * ...
+
+6. Generate HTML files from the JSON files about categories 
