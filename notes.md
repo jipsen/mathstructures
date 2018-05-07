@@ -12,8 +12,7 @@ signature for operation and relation symbols. Free variables in axioms are assum
 When a category extends (several) other categories, the unicode symbols in the signature can be renamed.
 
 5. List of the main categories that are used as base categories for subcategories and extensions:
-
-  * Alg(n1,n2,...)     category of algebras with operations of arity n1 ≥ n2 ≥ ...
+  * Alg(n1,n2,...)     category of algebras with operations of arity n1 >= n2 >= ...
   * Semigroups
   * Monoids
   * Groups
