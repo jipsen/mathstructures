@@ -158,7 +158,7 @@ Lewis systems:
 * <a href="CLp.html">T</a>: $\Box p \to  p$
 * <a href="CLLp.html">4</a>: $\Box p \to \Box \Box p$
 * <a href="CMLM.html">5</a>: $\Diamond p \to  \Box \Diamond p$ [Hughes and Cresswell call this "E"]
-* <a name="G1" id="G1">G1</a>: $\Diamond \Box p \to  \Box \Diamond$ <!-- CMpLMp -->
+* <a name="G1" id="G1">G1</a>: $\Diamond \Box p \to  \Box \Diamond p$ <!-- CMpLMp -->
 * <a name="MS" id="MS">MS</a>: $\Box \Diamond p \Rightarrow \Diamond \Box p$ [Hughes and Cresswell call this "M"] <!-- CLMMp -->
 * <a name="N1" id="N1">N1</a>: $\Box (\Box (p\to \Box p)\to p) \to  (\Diamond \Box p\to p)$
 * <a name="N1S" id="N1S">N1S</a>: $\Box (\Box (p\to \Box p)\to p) \Rightarrow   (\Diamond \Box p\to p)$
